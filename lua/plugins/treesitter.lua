@@ -5,7 +5,7 @@ return { "nvim-treesitter/nvim-treesitter",
 require('nvim-treesitter.install').compilers = { "clang" }
 
 treesitter.setup({
-    ensure_installed = { "c","java","python", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+			auto_install=true,
     highlight = { enable = true },
     indent = { enable = true },
 })

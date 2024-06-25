@@ -1,33 +1,50 @@
-return{
-
+return {
 	{
-	"williamboman/mason.nvim",
-	config =function()
-	require("mason").setup()
-	end
-
-},
-	{
-	"williamboman/mason-lspconfig.nvim",
-	config=function()
-	require('mason-lspconfig.install').compilers = { "clang" }
-	require("mason-lspconfig").setup
-		{
-
-    ensure_installed = { "lua_ls", "rust_analyzer","clangd","cssls","cssmodules_ls" ,"somesass_ls","eslint","jsonls","jdtls","stylelint_lsp","html","tsserver","intelephense","pyright" },
-}
-		end
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup()
+		end,
 	},
 	{
-	"neovim/nvim-lspconfig",
-	config=function()
-	local lspconfig=require("lspconfig")
-	lspconfig.tsserver.setup({})
-	lspconfig.lua_ls.setup({})	
-	lspconfig.pyright.setup({})	
-	vim.keymap.set('n','K',vim.lsp.buf.hover,{})
-	vim.keymap.set('n', 'gd',vim.lsp.buf.definition,{})		
-	vim.keymap.set({'n','v'},'<leader>ca',vim.lsp.buf.code_action,{})		
-	end
-	}
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		opts = {
+			auto_install = true,
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			local lspconfig = require("lspconfig")
+			lspconfig.tsserver.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.solargraph.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.html.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.jdtls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.eslint.setup({
+				capabilities = capabilities,
+			})
+				lspconfig.pyright.setup({
+				capabilities = capabilities,
+      })
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+		end,
+	},
 }
