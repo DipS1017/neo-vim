@@ -9,8 +9,12 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
-		opts = {
-			auto_install = true,
+    config=function ()
+ require("mason-lspconfig").setup()
+  	opts = {
+			auto_install = true,}
+    end
+	
 		},
 	},
 	{
@@ -46,5 +50,5 @@ return {
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
-	},
-}
+	}
+

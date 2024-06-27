@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamed"
+vim.opt.number=true
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 2

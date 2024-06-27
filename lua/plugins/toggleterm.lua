@@ -30,13 +30,13 @@ return {
 			-- Custom function to open terminal in current file's directory
 			local Terminal = require("toggleterm.terminal").Terminal
 
-
 			-- Key mapping to close the terminal
 			vim.api.nvim_set_keymap("n", "<leader>tc", ":ToggleTerm<CR>", { noremap = true, silent = true })
 
 			-- Remap <Esc> to leave TERMINAL mode
 			function _G.set_terminal_keymaps()
 				local opts = { noremap = true }
+
 				vim.api.nvim_buf_set_keymap(0, "t", "<Esc>", [[<C-\><C-n>]], opts)
 			end
 
