@@ -1,23 +1,18 @@
 return {
-	{
-		"williamboman/mason.nvim",
-		lazy = false,
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
-    config=function ()
- require("mason-lspconfig").setup()
-  	opts = {
-			auto_install = true,}
-    end
-	
-		},
-	},
-	{
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+      auto_install = true,
+    },
+  },	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
@@ -50,5 +45,5 @@ return {
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
-	}
-
+	},
+}
